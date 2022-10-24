@@ -1,22 +1,30 @@
 <template>
   <div class="events">
-    <h1>Vous êtes sur la page des évènements</h1>
-    <div class="event-card">
-      <img src="@/assets/logo.svg"/>
-      <BaseDateLabel dateTime="2022-11-26 14:45:00"/>
+    <h1>Découvrez nos prochaines représentations</h1>
+    <div class="event-list">
+      <EventCard name="Profit'Soirée" type="cabaret" :dateTime="new Date('2022-11-26 14:45:00')"/>
     </div>
   </div>
 </template>
 
 <script>
-import BaseDateLabel from '@/components/widgets/BaseDateLabel.vue'
+import EventCard from '@/components/EventCard.vue'
 
 export default {
   components: {
-    BaseDateLabel,
+    EventCard,
   },
 }
 </script>
 
-<style>
+<style scoped>
+.events {
+  margin: auto;
+  text-align: center;
+}
+
+.event-list {
+  text-align: left;
+  margin-top: 4em;
+}
 </style>
