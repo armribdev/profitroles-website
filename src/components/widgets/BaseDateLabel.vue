@@ -1,11 +1,21 @@
 <template>
-    <div class="date">
-        <span class="day-of-the-week">{{ day }}</span>
-        <span class="wrapper">
-          <span class="day">{{ date }}</span>
-          <span class="mounth">{{ month }}</span>
+    <span class="dateTimeLabel">
+      <span class="dateLabel">
+        <span class="day">{{ day }}</span>
+        <span class="right">
+          <span class="date">{{ date }}</span>
+          <span class="month">{{ month }}</span>
         </span>
-    </div>
+      </span>
+      <span class="timeLabel">
+        <span class="hours">{{ hours }}</span>
+        <span class="bottom">
+          <span class="timeSeparator">H</span>
+          <span class="minutes">{{  minutes }}</span>
+        </span>
+      </span>
+    </span>
+
   </template>
   
 <script>
@@ -14,36 +24,81 @@ const days = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam']
 
 export default {
   props: {
-    dateTime: String,
+    dateTime: {
+      type: Date,
+      required: true,
+    },
   },
   computed: {
     date() {
-      const date = new Date(this.dateTime)
-      return date.getDate()
+      return this.dateTime.getDate()
     },
     day() {
-      const date = new Date(this.dateTime)
-      return days[date.getDay()].toUpperCase()
+      return days[this.dateTime.getDay()].toUpperCase()
     },
     month() {
-      const date = new Date(this.dateTime)
-      return months[date.getMonth()].toUpperCase()
+      return months[this.dateTime.getMonth()].toUpperCase()
+    },
+    hours() {
+      return this.dateTime.getHours()
+    },
+    minutes() {
+      return this.dateTime.getMinutes()
     },
   }
 }
 </script>
 
 <style>
-.date {
+.dateTimeLabel {
+  display: flex;
+  align-items: center;
+  line-height: 1.4em;
+  font-weight: bold;
+}
+
+.dateLabel {
   font-family: "Space Mono", monospace;
+  display: flex;
+  align-items: center;
+  line-height: 1em;
 }
 
-.day-of-the-week {
+.day {
   display: block;
-  writing-mode: tb-rl
+  writing-mode: tb-rl;
+  font-size: 1.3em;
+  color: lightgray;
 }
 
-.wrapper {
-  display: block;
+.month {
+  font-size: 1.2em;
+}
+
+.date {
+  font-size: 2em;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4em;
+  align-items: center;
+}
+
+.timeLabel {
+  margin-left: 1em;
+}
+
+.hours {
+  font-size: 2em;
+}
+
+.bottom {
+  font-size: 1.2em;
+}
+
+.timeSeparator {
+  color: lightgray;
 }
 </style>
