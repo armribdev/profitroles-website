@@ -1,5 +1,5 @@
 <template>
-    <div class="event-card">
+    <div class="event-card" :class="{ 'disabled': isDisabled }">
         <div class="event-poster-wrapper">
           <img class="event-card-poster" src="@/assets/posters/poster.png" @click="showFullsceenPoster"/>
           <div class="event-fullscreen-poster-container" @click="hideFullsceenPoster" v-show="!fullscreenHidden">
@@ -18,7 +18,7 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatem cumque inventore accusantium quidem praesentium. Delectus repellendus fugit rem nesciunt, soluta, magnam adipisci fugiat tempore repellat unde nostrum facere voluptate.
           </div>
           <div class="event-card-footer">
-            <BaseButton label="Réserver mon billet" @click="goToTicketing" />
+            <BaseButton :label="buttonText" @click="goToTicketing" :disabled="isDisabled || !ticketingOpen"/>
           </div>
         </div>
     </div>
@@ -34,12 +34,22 @@ export default {
     BaseButton,
   },
   props: {
-    'name': String,
-    'type': String,
-    'dateTime': {
+    name: String,
+    type: String,
+    dateTime: {
       type: Date,
       required: true,
     },
+    ticketingURL: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    ticketingOpen: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
   },
   data: function () {
     return {
@@ -54,8 +64,22 @@ export default {
       this.fullscreenHidden = true;
     },
     goToTicketing: function (event) {
-      window.open('https://assos.utc.fr/woolly/ventes/', '_blank')
+      window.open(this.ticketingURL, '_blank');
     }
+  },
+  computed: {
+    isDisabled() {
+      return new Date() > this.dateTime;
+    },
+    buttonText() {
+      if (this.isDisabled)
+        return "Billeterie fermée...";
+      
+      if (this.ticketingOpen)
+        return "Réserver mon billet"
+      
+      return "Billeterie ouverte prochainement...";
+    },
   }
 }
 </script>
@@ -75,13 +99,21 @@ export default {
   max-height: 200px;
   max-width: 200px;
   transform: scale(1.5) rotate(-2deg);
-  transition: transform .1s;
+  transition: all .1s;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .event-card-poster:hover {
   transform: scale(1.6) rotate(-5deg);
+}
+
+.event-card.disabled .event-card-poster {
+  filter: grayscale(70%);
+}
+
+.event-card.disabled .event-card-poster:hover {
+  filter: grayscale(0%);
 }
 
 .event-card-content {
@@ -147,6 +179,22 @@ export default {
   margin-top: 1em;
   display: flex;
   justify-content: center;
+}
+
+.event-card.disabled {
+  color: lightgray;
+}
+
+.event-card.disabled .event-card-name {
+  color: rgb(192, 113, 113);
+}
+
+.event-card.disabled .event-card-description {
+  color: lightgray;
+}
+
+.event-card.disabled .event-card-poster {
+  color: lightgray;
 }
 
 @media (min-width: 1024px) {

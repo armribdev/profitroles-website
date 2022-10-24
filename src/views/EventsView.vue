@@ -2,7 +2,8 @@
   <div class="events">
     <h1>Découvrez nos prochaines représentations</h1>
     <div class="event-list">
-      <EventCard name="Profit'Soirée" type="cabaret" :dateTime="new Date('2022-11-26 14:45:00')"/>
+      <EventCard name="Profit'Soirée" type="cabaret" :dateTime="new Date('2022-11-26 14:45:00')" ticketingURL="https://assos.utc.fr/woolly/ventes/" />
+      <EventCard name="Profit'Soirée" type="cabaret" :dateTime="new Date('2012-11-26 14:45:00')" ticketingURL="https://assos.utc.fr/woolly/ventes/" />
     </div>
   </div>
 </template>

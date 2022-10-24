@@ -24,4 +24,8 @@ button {
 button:hover {
   background: #bb0000;
 }
+
+button[disabled] {
+  background: lightgray;
+}
 </style>
