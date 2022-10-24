@@ -8,8 +8,6 @@ import { RouterLink, RouterView } from "vue-router";
       alt="Profitroles logo"
       class="logo"
       src="@/assets/logo.svg"
-      width="125"
-      height="125"
     />
     <nav>
       <RouterLink to="/">Découvrir</RouterLink>
@@ -29,8 +27,13 @@ header {
   justify-content: center;
 }
 
+.logo {
+  height: 140px;
+  width: 140px;
+}
+
 nav {
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -38,13 +41,14 @@ nav a.router-link-exact-active {
   color: var(--color-text);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
 nav a {
   display: inline-block;
   padding: 0 1rem;
+  font-weight: 500;
+}
+
+nav a:hover {
+  transform: translateY(-.3em);
 }
 
 @media (min-width: 1024px) {
