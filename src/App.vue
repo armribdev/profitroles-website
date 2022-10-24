@@ -12,7 +12,7 @@ import { RouterLink, RouterView } from "vue-router";
       height="125"
     />
     <nav>
-      <RouterLink to="/">L'association</RouterLink>
+      <RouterLink to="/">Découvrir</RouterLink>
       <RouterLink to="/events">Nos représentations</RouterLink>
     </nav>
   </header>
@@ -27,10 +27,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.logo {
-
 }
 
 nav {
