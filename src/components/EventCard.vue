@@ -8,8 +8,8 @@
         </div>
         <div class="event-card-content">
           <div class="event-card-header">
-            <div class="event-card-title">
-              <h2 class="event-card-title">{{ name }}</h2>
+            <div class="event-card-name">
+              <h2 class="event-card-name">{{ name }}</h2>
               <h3 class="event-card-type">{{ type }}</h3>
             </div>
             <BaseDateLabel :dateTime="dateTime"/>
@@ -122,9 +122,10 @@ export default {
   flex-direction: column;
 }
 
-.event-card-title {
+.event-card-name {
   font-size: 1.4em;
   margin-bottom: -0.4em;
+  font-weight: 600;
 }
 
 .event-card-type {
@@ -139,6 +140,7 @@ export default {
 .event-card-description {
   margin-top: 1em;
   flex-grow: 1;
+  color: #444;
 }
 
 .event-card-footer {
