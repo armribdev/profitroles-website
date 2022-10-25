@@ -31,19 +31,19 @@ export default {
   },
   computed: {
     date() {
-      return this.dateTime.getDate()
+      return this.dateTime.getDate().toString().padStart(2, '0');
     },
     day() {
-      return days[this.dateTime.getDay()].toUpperCase()
+      return days[this.dateTime.getDay()].toUpperCase();
     },
     month() {
-      return months[this.dateTime.getMonth()].toUpperCase()
+      return months[this.dateTime.getMonth()].toUpperCase();
     },
     hours() {
-      return this.dateTime.getHours()
+      return this.dateTime.getHours().toString().padStart(2, '0');
     },
     minutes() {
-      return this.dateTime.getMinutes()
+      return this.dateTime.getMinutes().toString().padStart(2, '0');
     },
   }
 }
@@ -55,10 +55,10 @@ export default {
   align-items: center;
   line-height: 1.4em;
   font-weight: bold;
+  font-family: "Source Code Pro", "Space Mono", monospace;
 }
 
 .dateLabel {
-  font-family: "Source Code Pro", "Space Mono", monospace;
   display: flex;
   align-items: center;
   line-height: 1em;
@@ -90,6 +90,7 @@ export default {
 }
 
 .timeLabel {
+  margin-bottom: 0.2em;
   margin-left: 1em;
   font-weight: 700;
   display: flex;
