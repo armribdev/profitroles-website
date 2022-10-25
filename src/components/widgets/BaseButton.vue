@@ -19,6 +19,7 @@ button {
   color: white;
   border: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
 button:hover {
@@ -27,5 +28,6 @@ button:hover {
 
 button[disabled] {
   background: lightgray;
+  cursor: default;
 }
 </style>
