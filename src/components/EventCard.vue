@@ -93,6 +93,7 @@ export default {
   border-radius: 1em;
   padding: 1em;
   max-width: 840px;
+  margin-bottom: 6em;
 }
 
 .event-card-poster {
