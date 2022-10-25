@@ -94,7 +94,7 @@ export default {
   font-weight: 700;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: end;
 }
 
 .hours {
