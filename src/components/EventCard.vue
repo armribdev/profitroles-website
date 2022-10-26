@@ -1,9 +1,9 @@
 <template>
     <div class="event-card" :class="{ 'disabled': isDisabled }">
         <div class="event-poster-wrapper">
-          <img class="event-card-poster" src="@/assets/posters/poster.png" @click="showFullsceenPoster"/>
+          <img class="event-card-poster" :src="`../posters/${posterFilename}`" @click="showFullsceenPoster"/>
           <div class="event-fullscreen-poster-container" @click="hideFullsceenPoster" v-show="!fullscreenHidden">
-            <img class="event-fullscreen-poster" src="@/assets/posters/poster.png"/>
+            <img class="event-fullscreen-poster" src="`../posters/${posterFilename}`"/>
           </div>
         </div>
         <div class="event-card-content">
@@ -49,7 +49,12 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    }
+    },
+    posterFilename: {
+      type: String,
+      required: false,
+      default: "poster.png",
+    },
   },
   data: function () {
     return {
@@ -79,6 +84,9 @@ export default {
         return "Réserver mon billet"
       
       return "Billeterie ouverte prochainement...";
+    },
+    posterSrc() {
+      return `../assets/posters/${this.posterFilename}`;
     },
   }
 }
@@ -128,7 +136,9 @@ export default {
 
 .event-poster-wrapper {
   min-width: 300px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .event-fullscreen-poster-container {
