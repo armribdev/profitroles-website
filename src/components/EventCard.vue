@@ -15,7 +15,7 @@
             <BaseDateLabel :dateTime="dateTime"/>
           </div>
           <div class="event-card-description">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatem cumque inventore accusantium quidem praesentium. Delectus repellendus fugit rem nesciunt, soluta, magnam adipisci fugiat tempore repellat unde nostrum facere voluptate.
+            {{ description }}
           </div>
           <div class="event-card-footer">
             <BaseButton :label="buttonText" @click="goToTicketing" :disabled="isDisabled || !ticketingOpen"/>
@@ -55,6 +55,11 @@ export default {
       required: false,
       default: "poster.png",
     },
+    description: {
+      type: String,
+      required: false,
+      default: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatem cumque inventore accusantium quidem praesentium. Delectus repellendus fugit rem nesciunt, soluta, magnam adipisci fugiat tempore repellat unde nostrum facere voluptate."
+    }
   },
   data: function () {
     return {
