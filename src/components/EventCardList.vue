@@ -6,6 +6,7 @@
         :type="event.type"
         :posterFilename="event.posterFilename"
         :dateTime="event.dateTime"
+        :description="event.description"
         :ticketingURL="event.ticketingURL"
         :ticketingOpen="event.ticketingOpen"
         :key="index"
