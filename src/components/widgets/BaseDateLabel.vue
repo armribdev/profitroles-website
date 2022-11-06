@@ -1,16 +1,16 @@
 <template>
-    <span class="dateTimeLabel">
-      <span class="dateLabel">
+    <span class="date-time-label">
+      <span class="date-label">
         <span class="day">{{ day }}</span>
         <span class="date-right">
           <span class="date">{{ date }}</span>
           <span class="month">{{ month }}</span>
         </span>
       </span>
-      <span class="timeLabel">
+      <span class="time-label">
         <span class="hours">{{ hours }}</span>
         <span class="time-right">
-          <span class="timeSeparator">H</span>
+          <span class="time-separator">H</span>
           <span class="minutes">{{  minutes }}</span>
         </span>
       </span>
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style>
-.dateTimeLabel {
+.date-time-label {
   display: flex;
   align-items: center;
   line-height: 1.4em;
@@ -58,7 +58,7 @@ export default {
   font-family: "Source Code Pro", "Space Mono", monospace;
 }
 
-.dateLabel {
+.date-label {
   display: flex;
   align-items: center;
   line-height: 1em;
@@ -89,8 +89,8 @@ export default {
   align-items: center;
 }
 
-.timeLabel {
-  margin-bottom: 0.2em;
+.time-label {
+  margin-bottom: 0.4em;
   margin-left: 1em;
   font-weight: 700;
   display: flex;
@@ -111,13 +111,13 @@ export default {
   display: flex;
   flex-direction: column;
   line-height: .8em;
-  margin-left: .1em;
 }
 
-.timeSeparator {
+.time-separator {
   color: lightgray;
   font-weight: 700;
   font-size: .7em;
+  margin-left: .1em;
 }
 
 .minutes {
