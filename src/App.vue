@@ -4,20 +4,18 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <img
-      alt="Profitroles logo"
-      class="logo"
-      src="@/assets/logo.svg"
-    />
+    <img alt="Profitroles logo" class="logo" src="@/assets/logo.svg" />
     <nav>
       <RouterLink to="/">Découvrir</RouterLink>
       <RouterLink to="/events">Nos représentations</RouterLink>
     </nav>
   </header>
-  <RouterView class="router-view"/>
+  <RouterView class="router-view" />
   <footer class="footer">
     <a href="https://www.facebook.com/leo.profitroles.9">Facebook</a>
-    <a href="https://instagram.com/profit.roles?igshid=YmMyMTA2M2Y=">Instagram</a>
+    <a href="https://instagram.com/profit.roles?igshid=YmMyMTA2M2Y="
+      >Instagram</a
+    >
     <a href="mailto:profitroles.utc@gmail.com">Nous écrire</a>
   </footer>
 </template>
@@ -62,13 +60,21 @@ nav a {
   height: 3em;
 }
 
+.footer a {
+  opacity: 0.8;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
+
 @media (max-width: 534px) {
   header {
     flex-direction: column;
   }
 
   .logo {
-    margin: -.5em;
+    margin: -0.5em;
   }
 }
 
@@ -80,7 +86,7 @@ nav a {
 
 @media (hover: hover) and (min-width: 534px) {
   nav a:hover {
-    transform: translateY(-.2em);
+    transform: translateY(-0.2em);
   }
 }
 
