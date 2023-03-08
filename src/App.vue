@@ -14,8 +14,12 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/events">Nos représentations</RouterLink>
     </nav>
   </header>
-
-  <RouterView />
+  <RouterView class="router-view"/>
+  <footer class="footer">
+    <a href="https://www.facebook.com/leo.profitroles.9">Facebook</a>
+    <a href="https://instagram.com/profit.roles?igshid=YmMyMTA2M2Y=">Instagram</a>
+    <a href="mailto:profitroles.utc@gmail.com">Nous écrire</a>
+  </footer>
 </template>
 
 <style scoped>
@@ -45,15 +49,44 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   font-weight: 500;
+  line-height: 1em;
 }
 
-nav a:hover {
-  transform: translateY(-.3em);
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2em;
+  height: 3em;
+}
+
+@media (max-width: 534px) {
+  header {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin: -.5em;
+  }
 }
 
 @media (min-width: 1024px) {
   .logo {
     margin-right: 1em;
+  }
+}
+
+@media (hover: hover) and (min-width: 534px) {
+  nav a:hover {
+    transform: translateY(-.2em);
+  }
+}
+
+@media (hover: hover) {
+  nav a:hover {
+    color: rgb(231, 185, 185);
   }
 }
 </style>
