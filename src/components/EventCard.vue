@@ -1,32 +1,44 @@
 <template>
-    <div class="event-card" :class="{ 'disabled': isDisabled }">
-        <div class="event-poster-wrapper">
-          <img class="event-card-poster" :src="`../posters/${posterFilename}`" @click="showFullsceenPoster"/>
-          <div class="event-fullscreen-poster-container" @click="hideFullsceenPoster" v-show="!fullscreenHidden">
-            <img class="event-fullscreen-poster" src="`../posters/${posterFilename}`"/>
-          </div>
-        </div>
-        <div class="event-card-content">
-          <div class="event-card-header">
-            <div class="event-card-name">
-              <h2 class="event-card-name">{{ name }}</h2>
-              <h3 class="event-card-type">{{ type }}</h3>
-            </div>
-            <BaseDateLabel :dateTime="dateTime"/>
-          </div>
-          <div class="event-card-description">
-            {{ description }}
-          </div>
-          <div class="event-card-footer">
-            <BaseButton :label="buttonText" @click="goToTicketing" :disabled="isDisabled || !ticketingOpen"/>
-          </div>
-        </div>
+  <div class="event-card" :class="{ disabled: isDisabled }">
+    <div class="event-poster-wrapper">
+      <img
+        class="event-card-poster"
+        :src="`../posters/${posterFilename}`"
+        @click="showFullsceenPoster"
+      />
+      <div
+        class="event-fullscreen-poster-container"
+        @click="hideFullsceenPoster"
+        v-show="!fullscreenHidden"
+      >
+        <img class="event-fullscreen-poster" :src="posterFilename" />
+      </div>
     </div>
+    <div class="event-card-content">
+      <div class="event-card-header">
+        <div class="event-card-name">
+          <h2 class="event-card-name">{{ name }}</h2>
+          <h3 class="event-card-type">{{ type }}</h3>
+        </div>
+        <BaseDateLabel :dateTime="dateTime" />
+      </div>
+      <div class="event-card-description">
+        {{ description }}
+      </div>
+      <div class="event-card-footer">
+        <BaseButton
+          :label="buttonText"
+          @click="goToTicketing"
+          :disabled="isDisabled || !ticketingOpen"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import BaseButton from '@/components/widgets/BaseButton.vue'
-import BaseDateLabel from '@/components/widgets/BaseDateLabel.vue'
+import BaseButton from "@/components/widgets/BaseButton.vue";
+import BaseDateLabel from "@/components/widgets/BaseDateLabel.vue";
 
 export default {
   components: {
@@ -43,7 +55,7 @@ export default {
     ticketingURL: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     ticketingOpen: {
       type: Boolean,
@@ -58,13 +70,14 @@ export default {
     description: {
       type: String,
       required: false,
-      default: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatem cumque inventore accusantium quidem praesentium. Delectus repellendus fugit rem nesciunt, soluta, magnam adipisci fugiat tempore repellat unde nostrum facere voluptate."
-    }
+      default:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptatem cumque inventore accusantium quidem praesentium. Delectus repellendus fugit rem nesciunt, soluta, magnam adipisci fugiat tempore repellat unde nostrum facere voluptate.",
+    },
   },
   data: function () {
     return {
       fullscreenHidden: true,
-    }
+    };
   },
   methods: {
     showFullsceenPoster: function (event) {
@@ -74,27 +87,25 @@ export default {
       this.fullscreenHidden = true;
     },
     goToTicketing: function (event) {
-      window.open(this.ticketingURL, '_blank');
-    }
+      window.open(this.ticketingURL, "_blank");
+    },
   },
   computed: {
     isDisabled() {
       return new Date() > this.dateTime;
     },
     buttonText() {
-      if (this.isDisabled)
-        return "Billeterie fermée...";
-      
-      if (this.ticketingOpen)
-        return "Réserver mon billet"
-      
+      if (this.isDisabled) return "Billeterie fermée...";
+
+      if (this.ticketingOpen) return "Réserver mon billet";
+
       return "Billeterie ouverte prochainement...";
     },
     posterSrc() {
       return `../assets/posters/${this.posterFilename}`;
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -113,7 +124,7 @@ export default {
   max-height: 200px;
   max-width: 200px;
   transform: scale(1.5) rotate(-2deg);
-  transition: all .1s;
+  transition: all 0.1s;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -131,7 +142,7 @@ export default {
 }
 
 .event-card-content {
-  flex: 1
+  flex: 1;
 }
 
 .event-card-header {
@@ -184,7 +195,6 @@ export default {
   color: lightgray;
 }
 
-
 .event-card-description {
   margin-top: 1em;
   flex-grow: 1;
@@ -214,9 +224,9 @@ export default {
 }
 
 @media (min-width: 1024px) {
-.event-fullscreen-poster {
-  max-height: 90vh;
-  max-width: 90vw;
-}
+  .event-fullscreen-poster {
+    max-height: 90vh;
+    max-width: 90vw;
+  }
 }
 </style>
