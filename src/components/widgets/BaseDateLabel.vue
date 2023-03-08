@@ -1,26 +1,38 @@
 <template>
-    <span class="date-time-label">
-      <span class="date-label">
-        <span class="day">{{ day }}</span>
-        <span class="date-right">
-          <span class="date">{{ date }}</span>
-          <span class="month">{{ month }}</span>
-        </span>
-      </span>
-      <span class="time-label">
-        <span class="hours">{{ hours }}</span>
-        <span class="time-right">
-          <span class="time-separator">H</span>
-          <span class="minutes">{{  minutes }}</span>
-        </span>
+  <span class="date-time-label">
+    <span class="date-label">
+      <span class="day">{{ day }}</span>
+      <span class="date-right">
+        <span class="date">{{ date }}</span>
+        <span class="month">{{ month }}</span>
       </span>
     </span>
-
-  </template>
+    <span class="time-label">
+      <span class="hours">{{ hours }}</span>
+      <span class="time-right">
+        <span class="time-separator">H</span>
+        <span class="minutes">{{ minutes }}</span>
+      </span>
+    </span>
+  </span>
+</template>
   
 <script>
-const months = ['jan', 'fév', 'mar', 'avr', 'mai', 'jun', 'jul', 'aoû', 'sep', 'oct', 'nov', 'dec']
-const days = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam']
+const months = [
+  "jan",
+  "fév",
+  "mar",
+  "avr",
+  "mai",
+  "jun",
+  "jul",
+  "aoû",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+];
+const days = ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"];
 
 export default {
   props: {
@@ -31,7 +43,7 @@ export default {
   },
   computed: {
     date() {
-      return this.dateTime.getDate().toString().padStart(2, '0');
+      return this.dateTime.getDate().toString().padStart(2, "0");
     },
     day() {
       return days[this.dateTime.getDay()].toUpperCase();
@@ -40,13 +52,13 @@ export default {
       return months[this.dateTime.getMonth()].toUpperCase();
     },
     hours() {
-      return this.dateTime.getHours().toString().padStart(2, '0');
+      return this.dateTime.getHours().toString().padStart(2, "0");
     },
     minutes() {
-      return this.dateTime.getMinutes().toString().padStart(2, '0');
+      return this.dateTime.getMinutes().toString().padStart(2, "0");
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -110,14 +122,14 @@ export default {
 .time-right {
   display: flex;
   flex-direction: column;
-  line-height: .8em;
+  line-height: 0.8em;
 }
 
 .time-separator {
   color: lightgray;
   font-weight: 700;
-  font-size: .7em;
-  margin-left: .1em;
+  font-size: 0.7em;
+  margin-left: 0.1em;
 }
 
 .minutes {
