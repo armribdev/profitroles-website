@@ -34,6 +34,5 @@ export default {
 <style scoped>
 .event-list {
   text-align: left;
-  margin-top: 4em;
 }
 </style>
