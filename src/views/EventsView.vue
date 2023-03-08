@@ -7,8 +7,7 @@
       P23.
     </p>
     <p>
-      En attendant, venez découvrir nos prochaines représentations sur notre
-      page
+      En attendant, venez découvrir notre actualité sur notre page
       <a href="https://www.facebook.com/leo.profitroles.9">Facebook</a> !
     </p>
   </div>
